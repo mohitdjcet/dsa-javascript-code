@@ -1,16 +1,21 @@
-let num =121;
-let original = num;
-let reverse = 0;
+// function printNumber(n){
+//     if ( n===0){
+//         return; 
+//     }
 
-while( num>0){
-    let lastDigit = num%10;
-    reverse = reverse*10 +lastDigit;
-    num = Math.floor(num/10);
-}
-
-if( original === reverse){
-    console.log("Palindrome Number");
-}else{
-    console.log("Not a Palindrome Number");
+//     printNumber(n-1);
+//     console.log(n);
     
+// }
+
+// printNumber(5)
+
+// 5! = 5*4*3*2*1
+
+function factorial(n){
+    if (n ===1){
+        return 1;
+    }
+    return n*factorial(n-1);
 }
+console.log(factorial(5));
