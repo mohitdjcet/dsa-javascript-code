@@ -1,21 +1,19 @@
-// function printNumber(n){
-//     if ( n===0){
-//         return; 
+// function fcIterative(n){
+//     let result = 1;
+
+//     for(let i =1; i<=n; i++){
+//         result = result*i;
 //     }
-
-//     printNumber(n-1);
-//     console.log(n);
-    
+//     return result;
 // }
+// console.log(fcIterative(5));
 
-// printNumber(5)
 
-// 5! = 5*4*3*2*1
-
-function factorial(n){
-    if (n ===1){
+function fcRecursion(n){
+    if(n ===1){
         return 1;
     }
-    return n*factorial(n-1);
+
+    return n*fcRecursion(n-1);
 }
-console.log(factorial(5));
+console.log(fcRecursion(5));
