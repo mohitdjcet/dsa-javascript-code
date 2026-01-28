@@ -1,19 +1,10 @@
-// function fcIterative(n){
-//     let result = 1;
+//Input n=5
+//Output=5
 
-//     for(let i =1; i<=n; i++){
-//         result = result*i;
-//     }
-//     return result;
-// }
-// console.log(fcIterative(5));
+function fibonacci(n){
+    if ( n===0) return 0;
+    if ( n===1 ) return 1;
 
-
-function fcRecursion(n){
-    if(n ===1){
-        return 1;
-    }
-
-    return n*fcRecursion(n-1);
+    return fibonacci(n-1)+fibonacci(n-2);
 }
-console.log(fcRecursion(5));
+console.log(fibonacci(5));
