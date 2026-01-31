@@ -1,10 +1,28 @@
-//Input n=5
-//Output=5
+//1 to n-Print
 
-function fibonacci(n){
-    if ( n===0) return 0;
-    if ( n===1 ) return 1;
+// function printNumbers(n) {
+//     if( n===0) return;
 
-    return fibonacci(n-1)+fibonacci(n-2);
+//     printNumbers(n-1);
+//     console.log(n);
+    
+// }
+// printNumbers(3);
+
+// function sumDigit(n){
+//     if( n===0 ) return 0;
+
+//     return (n%10)+ sumDigit(Math.floor(n/10))
+// }
+
+// console.log(sumDigit(123));
+
+
+//Power of n
+
+function power(a,b){
+    if(b === 0) return 1;
+
+    return a*power(a,b-1);
 }
-console.log(fibonacci(5));
+console.log(power(2,3));
