@@ -1,20 +1,15 @@
-let arr = [10,5,20,8];
+let arr = [1,2,2,3,4,4,5];
 
-let largest = -Infinity;
-let secondLargest = -Infinity;
+// let uniqeArr = [...new Set(arr)];
 
-for(let i = 0; i < arr.length; i++){
-    if(arr[i] > largest){
-        secondLargest = largest;
-        largest = arr[i];
-    } else if(arr[i]> secondLargest && arr[i] !== largest){
-        secondLargest = arr[i];
+// console.log(uniqeArr);
+
+let uniqeArr = [];
+
+for(let i =0; i < arr.length; i++){
+    if(!uniqeArr.includes(arr[i])){
+        uniqeArr.push(arr[i]);
     }
 }
 
-if(secondLargest === -Infinity){
-    console.log("No Second Largest Element in Arr");
-} else{
-    console.log("Second Largest:",secondLargest);
-    
-}
+console.log(uniqeArr);
