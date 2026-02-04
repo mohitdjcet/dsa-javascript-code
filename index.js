@@ -1,14 +1,20 @@
-let arr = [1,2,3,4];
-let start = 0;
-let end = arr.length-1;
+let arr = [10,5,20,8];
 
-while(start < end){
-    let temp = arr[start];
-    arr[start] = arr[end];
-    arr[end] = temp;
+let largest = -Infinity;
+let secondLargest = -Infinity;
 
-    start++;
-    end--;
+for(let i = 0; i < arr.length; i++){
+    if(arr[i] > largest){
+        secondLargest = largest;
+        largest = arr[i];
+    } else if(arr[i]> secondLargest && arr[i] !== largest){
+        secondLargest = arr[i];
+    }
 }
 
-console.log(arr);
+if(secondLargest === -Infinity){
+    console.log("No Second Largest Element in Arr");
+} else{
+    console.log("Second Largest:",secondLargest);
+    
+}
