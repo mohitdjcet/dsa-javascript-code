@@ -1,28 +1,20 @@
-//1 to n-Print
+//Input= "hello"
+//Output= "olleh"
 
-// function printNumbers(n) {
-//     if( n===0) return;
+let str = "hello";
+let strArr = str.split("");
 
-//     printNumbers(n-1);
-//     console.log(n);
-    
-// }
-// printNumbers(3);
+let start = 0;
+let end = strArr.length - 1;
 
-// function sumDigit(n){
-//     if( n===0 ) return 0;
+while(start<end){
+    let temp = strArr[start];
+    strArr[start] = strArr[end];
+    strArr[end] = temp;
 
-//     return (n%10)+ sumDigit(Math.floor(n/10))
-// }
-
-// console.log(sumDigit(123));
-
-
-//Power of n
-
-function power(a,b){
-    if(b === 0) return 1;
-
-    return a*power(a,b-1);
+    start++;
+    end--;
 }
-console.log(power(2,3));
+
+console.log(strArr.join(""));
+
