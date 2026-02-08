@@ -1,29 +1,17 @@
-// function isAnagram(s,t){
-//    s = s.toLowerCase().replace(/\s+/g,"");
-//    t = t.toLowerCase().replace(/\s+/g,"");
+function isPaindrome(str){
+    let s = str.toLowerCase().replace(/[^a-z0-9]/g,"");
 
-//    if(s.length !== t.length) return false;
+    let start = 0;
+    let end = s.length -1;
 
-//    let freq = {};
-
-//    for(let ch of s){
-//     freq[ch] = (freq[ch] || 0) +1;
-//    }
-
-//    for(let ch of t){
-//     if(!freq[ch]) return flase;
-//     freq[ch]--;
-//    }
-
-//    return true;
-// }
-
-// console.log(isAnagram("Listen t","silent t"));
-
-function isAnagram(s,t){
-   s = s.toLowerCase().replace(/\s+/g,"");
-   t = t.toLowerCase().replace(/\s+/g,"");
-
-   return s.split("").sort().join("") === t.split("").sort().join("");
+    while(start < end){
+        if(s[start] !== s[end]){
+            return false
+        }
+        start++;
+        end--;
+    }
+    return true
 }
-console.log(isAnagram("Listen t","silent t"));
+
+console.log(isPaindrome("mad:am"));
