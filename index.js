@@ -1,17 +1,11 @@
-function isPaindrome(str){
-    let s = str.toLowerCase().replace(/[^a-z0-9]/g,"");
+function charFre(str){
+    let freq = {};
+    str = str.toLowerCase().replace(/\s+/g,"");
 
-    let start = 0;
-    let end = s.length -1;
-
-    while(start < end){
-        if(s[start] !== s[end]){
-            return false
-        }
-        start++;
-        end--;
+    for(let ch of str){
+        freq[ch]= (freq[ch] || 0)+1;
     }
-    return true
+    return freq;
 }
 
-console.log(isPaindrome("mad:am"));
+console.log(charFre("Hello World"));
