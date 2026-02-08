@@ -1,29 +1,29 @@
-let s = "JavaScript";
+// function isAnagram(s,t){
+//    s = s.toLowerCase().replace(/\s+/g,"");
+//    t = t.toLowerCase().replace(/\s+/g,"");
 
-console.log(s.includes("script"));
+//    if(s.length !== t.length) return false;
 
-let a = 'Hello';
-let b = 'hello';
+//    let freq = {};
 
-console.log(a + " " + b);
-console.log(a === b);
+//    for(let ch of s){
+//     freq[ch] = (freq[ch] || 0) +1;
+//    }
 
+//    for(let ch of t){
+//     if(!freq[ch]) return flase;
+//     freq[ch]--;
+//    }
 
-// console.log(s.length);
-
-// console.log(s.toUpperCase());
-// console.log(s.toLowerCase());
-
-// console.log(s.substring(0,4));
-// console.log(s.slice(4,10));
-
-
-
-// s[0]= "H";
-// console.log(s);
-
-// console.log(n[4]);
-
-// for(let i = 0; i<n.length; i++){
-//     console.log(n[i]);
+//    return true;
 // }
+
+// console.log(isAnagram("Listen t","silent t"));
+
+function isAnagram(s,t){
+   s = s.toLowerCase().replace(/\s+/g,"");
+   t = t.toLowerCase().replace(/\s+/g,"");
+
+   return s.split("").sort().join("") === t.split("").sort().join("");
+}
+console.log(isAnagram("Listen t","silent t"));
