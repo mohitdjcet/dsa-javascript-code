@@ -1,26 +1,29 @@
-function reverse(arr, start,end){
-    //Two Pointer
-    while(start < end){
-        let temp = arr[start];
-        arr[start]= arr[end];
-        arr[end]= temp;
+let s = "JavaScript";
 
-        start++;
-        end--;
-    }
-}
+console.log(s.includes("script"));
 
-let arr = [1,2,3,4,5];
-let k=2;
-k = k%arr.length; //Edge Case Handle
+let a = 'Hello';
+let b = 'hello';
+
+console.log(a + " " + b);
+console.log(a === b);
 
 
-// reverse(arr,0,k-1);
-// reverse(arr,k,arr.length-1);
-// reverse(arr,0,arr.length-1);
+// console.log(s.length);
 
-reverse(arr,0,arr.length-1);
-reverse(arr,0,k-1);
-reverse(arr,k,arr.length-1);
+// console.log(s.toUpperCase());
+// console.log(s.toLowerCase());
 
-console.log(arr);
+// console.log(s.substring(0,4));
+// console.log(s.slice(4,10));
+
+
+
+// s[0]= "H";
+// console.log(s);
+
+// console.log(n[4]);
+
+// for(let i = 0; i<n.length; i++){
+//     console.log(n[i]);
+// }
