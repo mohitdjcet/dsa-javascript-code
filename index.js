@@ -1,12 +1,24 @@
-let stack = [];
+function isValid(s){
+    let stack = [];
+    let map = {
+        ')':'(',
+        '}':'{',
+        ']':'['
+    };
 
-stack.push(10);
-stack.push(20);
-stack.push(30);
+    for(let ch of s){
+        if(ch === '(' || ch === '{' | ch === '['){
+            stack.push(ch);
+        } else{
+            if(stack.length === 0) return false;
 
-// stack.pop();
+            let top = stack.pop();
+            if(top !== map[ch]) return false
+        }
+    }
+    return stack.length === 0;
+}
 
-console.log(stack[stack.length-1]);
+console.log(isValid("(){}[]"));
+console.log(isValid("([)]"));
 
-
-console.log(stack);
