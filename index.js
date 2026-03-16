@@ -9,7 +9,15 @@ class LinkedList{
         this.head = null;
     }
 
-    append(data){
+    insertAtBiginning(data){
+        const newNode = new Node(data);
+
+        newNode.next = this.head;
+
+        this.head = newNode;
+    }
+
+    insertAtEnd(data){
         let newNode = new Node(data);
 
         if(!this.head){
@@ -17,13 +25,35 @@ class LinkedList{
             return;
         }
 
-        let current = this.head;
-
+        let current = this.head
         while(current.next){
             current = current.next;
         }
-
         current.next = newNode;
+    }
+
+    deleteFromBiginning(){
+        if(!this.head) return null;
+        this.head = this.head.next;
+    }
+
+    deleteByValue(value){
+        if(!this.head) return null;
+
+        if(this.head.data === value){
+            this.head = this.head.next;
+            return;
+        }
+
+        let current = this.head;
+
+        while(current.next && current.next.data !== value){
+            current = current.value;
+        }
+
+        if(current.next){
+            current.next = current.next.next;
+        }
     }
 
     print(){
@@ -31,7 +61,7 @@ class LinkedList{
         let result = "";
 
         while(current){
-            result += current.data + "->";
+            result += current.data + " -> ";
 
             current = current.next;
         }
@@ -42,8 +72,15 @@ class LinkedList{
 
 let list = new LinkedList();
 
-list.append(10);
-list.append(20);
-list.append(30);
+list.insertAtBiginning(20);
+list.insertAtBiginning(10);
+list.insertAtEnd(30);
+list.insertAtEnd(40);
 
+list.print();
+
+list.deleteFromBiginning();
+list.print();
+
+list.deleteByValue(30);
 list.print();
