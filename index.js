@@ -1,4 +1,49 @@
-console.log("DSA Full Series – Step by Step");
-console.log("Main branch is used throughout this playlist");
-console.log("Check the Git branch name shown at the bottom-left of the video");
-console.log("Subscribe & Code with YouTube: Mohit Decodes");
+class Node{
+    constructor(data){
+        this.data = data;
+        this.next = null;
+    }
+}
+class LinkedList{
+    constructor(){
+        this.head = null;
+    }
+
+    append(data){
+        let newNode = new Node(data);
+
+        if(!this.head){
+            this.head = newNode;
+            return;
+        }
+
+        let current = this.head;
+
+        while(current.next){
+            current = current.next;
+        }
+
+        current.next = newNode;
+    }
+
+    print(){
+        let current = this.head;
+        let result = "";
+
+        while(current){
+            result += current.data + "->";
+
+            current = current.next;
+        }
+
+        console.log(result + "null")
+    }
+}
+
+let list = new LinkedList();
+
+list.append(10);
+list.append(20);
+list.append(30);
+
+list.print();
