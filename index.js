@@ -1,86 +1,81 @@
-class Node{
-    constructor(data){
-        this.data = data;
-        this.next = null;
-    }
+class Node {
+  constructor(data) {
+    this.data = data; 
+    this.next = null;
+  }
 }
-class LinkedList{
-    constructor(){
-        this.head = null;
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  // Insert node at end
+  append(data) {
+    const newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode;
+      return;
     }
 
-    insertAtBiginning(data){
-        const newNode = new Node(data);
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
 
-        newNode.next = this.head;
+  reverse(){
+    let prev = null;
+    let current = this.head;
 
-        this.head = newNode;
+    while(current){
+        let next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
+    }
+    this.head = prev
+  }
+
+  recSol(node = this.head){
+    if(!node || !node.next){
+        this.head = node;
+        return node;
     }
 
-    insertAtEnd(data){
-        let newNode = new Node(data);
+    let newHead = this.recSol(node.next);
 
-        if(!this.head){
-            this.head = newNode;
-            return;
-        }
+    node.next.next = node;
+    node.next = null;
 
-        let current = this.head
-        while(current.next){
-            current = current.next;
-        }
-        current.next = newNode;
+
+    return newHead;
+  }
+
+  // Print Linked List
+  print() {
+    let current = this.head;
+    let result = "";
+
+    while (current) {
+      result += current.data + " → ";
+      current = current.next;
     }
-
-    deleteFromBiginning(){
-        if(!this.head) return null;
-        this.head = this.head.next;
-    }
-
-    deleteByValue(value){
-        if(!this.head) return null;
-
-        if(this.head.data === value){
-            this.head = this.head.next;
-            return;
-        }
-
-        let current = this.head;
-
-        while(current.next && current.next.data !== value){
-            current = current.value;
-        }
-
-        if(current.next){
-            current.next = current.next.next;
-        }
-    }
-
-    print(){
-        let current = this.head;
-        let result = "";
-
-        while(current){
-            result += current.data + " -> ";
-
-            current = current.next;
-        }
-
-        console.log(result + "null")
-    }
+    console.log(result + "null");
+  }
 }
 
 let list = new LinkedList();
 
-list.insertAtBiginning(20);
-list.insertAtBiginning(10);
-list.insertAtEnd(30);
-list.insertAtEnd(40);
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
 
 list.print();
 
-list.deleteFromBiginning();
-list.print();
+// list.reverse();
+// list.print();
 
-list.deleteByValue(30);
+list.recSol();
 list.print();
