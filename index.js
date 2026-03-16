@@ -24,32 +24,19 @@ class LinkedList {
     current.next = newNode;
   }
 
-  reverse(){
-    let prev = null;
-    let current = this.head;
+  detectLoop(){
+    let slow = this.head;
+    let fast = this.head;
 
-    while(current){
-        let next = current.next;
-        current.next = prev;
-        prev = current;
-        current = next;
+    while(fast && fast.next){
+        slow = slow.next;
+        fast = fast.next.next;
+
+        if(slow === fast){
+            return true;
+        }
     }
-    this.head = prev
-  }
-
-  recSol(node = this.head){
-    if(!node || !node.next){
-        this.head = node;
-        return node;
-    }
-
-    let newHead = this.recSol(node.next);
-
-    node.next.next = node;
-    node.next = null;
-
-
-    return newHead;
+    return false;
   }
 
   // Print Linked List
@@ -74,8 +61,14 @@ list.append(4);
 
 list.print();
 
-// list.reverse();
-// list.print();
+// list.head.next.next.next.next = list.head.next;
 
-list.recSol();
-list.print();
+let first = list.head;
+let second = first.next;
+let third = second.next;
+let forth = third.next;
+
+
+forth.next = second;
+
+console.log(list.detectLoop())
