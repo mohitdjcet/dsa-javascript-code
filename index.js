@@ -4,14 +4,16 @@ class Node {
     this.next = null;
   }
 }
+
 class LinkedList {
   constructor() {
     this.head = null;
   }
 
-  // Insert node at end
+  // Insert at end
   append(data) {
     const newNode = new Node(data);
+
     if (!this.head) {
       this.head = newNode;
       return;
@@ -21,54 +23,58 @@ class LinkedList {
     while (current.next) {
       current = current.next;
     }
+
     current.next = newNode;
   }
 
-  detectLoop(){
-    let slow = this.head;
-    let fast = this.head;
+  mergeList(l1,l2){
+    let dummy = new Node(-1);
+    let current = dummy;
 
-    while(fast && fast.next){
-        slow = slow.next;
-        fast = fast.next.next;
-
-        if(slow === fast){
-            return true;
-        }
+    while(l1 && l2){
+      if(l1.data < l2.data){
+        current.next = l1;
+        l1= l1.next;
+      } else {
+        current.next = l2;
+        l2 = l2.next;
+      }
+      current = current.next;
     }
-    return false;
+
+
+    current.next = l1 || l2;
+
+    return dummy.next;
   }
 
-  // Print Linked List
-  print() {
-    let current = this.head;
+  // Print list from any head
+  printFrom(head) {
+    let current = head;
     let result = "";
 
     while (current) {
       result += current.data + " → ";
       current = current.next;
     }
+
     console.log(result + "null");
   }
 }
 
-let list = new LinkedList();
+let list1 = new LinkedList();
+list1.append(1);
+list1.append(3);
+list1.append(5);
 
-list.append(1);
-list.append(2);
-list.append(3);
-list.append(4);
+let list2 = new LinkedList();
+list2.append(2);
+list2.append(4);
+list2.append(6);
 
-list.print();
+list1.printFrom(list1.head);
+list2.printFrom(list2.head);
 
-// list.head.next.next.next.next = list.head.next;
+let mergeHead=list1.mergeList(list1.head,list2.head);
 
-let first = list.head;
-let second = first.next;
-let third = second.next;
-let forth = third.next;
-
-
-forth.next = second;
-
-console.log(list.detectLoop())
+list1.printFrom(mergeHead);
