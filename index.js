@@ -1,36 +1,62 @@
-// // let map ={};
+//Input = [1,2,2,3,1,4,2]
+//Output = {1:2,2:3,3:1,4:1}
 
-// // map["name"]="Mohit";
-// // map["age"]= 28;
+// function freqCount(arr){
+//   let map = {};
 
-// // console.log(map["age"])
+//   for(let num of arr){
+//     map[num] = (map[num] || 0)+1;
+//   }
+//   return map;
+// }
+// console.log(freqCount([1,2,2,3,1,4,2]))
 
-// let map = new Map();
+//Input = [1,2,2,3,1,4,2]
+//Output = 2
 
-// map.set("name","Mohit");
-// map.set("age",28);
+// function mostFreq(arr){
+//   let map = {};
+//   let maxCount = 0;
+//   let result = null;
+
+//   for(let num of arr){
+//     map[num] = (map[num] || 0)+1;
+
+//     if(map[num]> maxCount){
+//       maxCount = map[num];
+//       result = num;
+//     }
+//   }
+//   return result;
+// }
+// console.log(mostFreq([1,2,2,3,1,4,2]))
+
+// function firstUniq(str) {
+//   let map = {};
+//   for (let ch of str) {
+//     map[ch] = (map[ch] || 0) + 1;
+//   }
+
+//   for(let ch of str){
+//     if(map[ch]=== 1){
+//       return ch
+//     }
+//   }
+//   return null;
+// }
+
+// console.log(firstUniq("aabbcdde"));
 
 
-// // console.log(map.get("age"))
+function contDup(arr){
+  let set = new Set();
 
-// // console.log(map.has("city"));
-// // console.log(map.delete("age"));
-// // console.log(map.get("age"))
-
-// console.log(map.size)
-
-function twoSum(arr,target){
-  let map = {};
-
-  for(let i =0; i<arr.length;i++){
-    let comp = target-arr[i];
-
-    if(map[comp] != undefined){
-      return [map[comp],i]
+  for(let num of arr){
+    if(set.has(num)){
+      return true;
     }
-    map[arr[i]]= i;
+    set.add(num);
   }
-  return [];
+  return false;
 }
-
-console.log(twoSum([2,7,11,15],13))
+console.log(contDup([1,2,3]));
