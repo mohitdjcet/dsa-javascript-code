@@ -1,32 +1,35 @@
-// function subArrSum(arr,k){
-//   for(let i =0; i < arr.length; i++){
-//     let sum = 0;
-//     for(let j =i; j < arr.length; j++){
-//       sum += arr[j];
+// let set = new Set([1,2,3,3,4]);
 
-//       if(sum === k){
-//         return true;
-//       }
-//     }
-//   }
-//   return false;
+// set.add(5);
+// set.delete(2);
+// set.clear();
+// console.log(set);
+
+// for( let val of set){
+//     console.log(val);
 // }
 
-function subArrSum(arr,k){
-  let map = new Map();
-  let sum = 0;
+// let arr = [...set];
+// console.log(arr);
 
-  map.set(0,1);
 
-  for(let num of arr){
-    sum +=num;
-    
-    if(map.has(sum-k)){
-      return true;
-    }
-    map.set(sum,(map.get(sum) || 0)+1);
-  }
-  return false;
+// function remDub(arr){
+//     return [...new Set(arr)]
+// }
+// console.log(remDub([1,2,2,3,4]))
+
+// function hasDup(arr){
+//     let set = new Set();
+
+//     for(let num of arr){
+//         if(set.has(num)) return true;
+//         set.add(num);
+//     }
+//     return false;
+// }
+// console.log(hasDup([1,2,3]))
+
+function uniqCount(arr){
+    return new Set(arr).size;
 }
-
-console.log(subArrSum([1,2,3,4],6))
+console.log(uniqCount([1,2,2,3]))
