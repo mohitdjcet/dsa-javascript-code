@@ -1,35 +1,51 @@
-// let set = new Set([1,2,3,3,4]);
+// let obj = {};
 
-// set.add(5);
-// set.delete(2);
-// set.clear();
-// console.log(set);
+// obj[1] = "Number Key";
+// obj["1"]= "String Key";
 
-// for( let val of set){
-//     console.log(val);
+// console.log(obj)
+
+// let map = new Map();
+// map.set(1,"Number Key");
+// map.set("1","String Key");
+
+// console.log(map)
+
+// let obj = {a:1,b:2};
+
+// for(let key in obj){
+//     console.log(key,obj[key]);
 // }
 
-// let arr = [...set];
-// console.log(arr);
+// let map = new Map([
+//     ["a",1],
+//     ["b",2]
+// ])
 
-
-// function remDub(arr){
-//     return [...new Set(arr)]
+// for(let [key,value] of map){
+//     console.log(key,value);
+    
 // }
-// console.log(remDub([1,2,2,3,4]))
 
-// function hasDup(arr){
-//     let set = new Set();
+// let obj = {a:1,b:2};
+// // console.log(Object.keys(obj).length)
+// console.log(delete obj.a)
+// console.log(obj)
 
-//     for(let num of arr){
-//         if(set.has(num)) return true;
-//         set.add(num);
-//     }
-//     return false;
-// }
-// console.log(hasDup([1,2,3]))
+// let map = new Map([
+//     ["a",1],
+//     ["b",2]
+// ])
+// console.log(map.delete("a"))
+// console.log(map)
 
-function uniqCount(arr){
-    return new Set(arr).size;
+function freq(arr){
+    let map = new Map();
+
+
+    for(let num of arr){
+        map.set(num, (map.get(num) || 0)+1);
+    }
+    return map;
 }
-console.log(uniqCount([1,2,2,3]))
+console.log(freq([1,2,2,3,3,3,3]))
