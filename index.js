@@ -1,51 +1,42 @@
-// let obj = {};
+// function findUnique(arr){
+//     let map = {};
 
-// obj[1] = "Number Key";
-// obj["1"]= "String Key";
+//     for(let num of arr){
+//         map[num] = (map[num] || 0)+1;
+//     }
 
-// console.log(obj)
+//     let result = [];
 
-// let map = new Map();
-// map.set(1,"Number Key");
-// map.set("1","String Key");
-
-// console.log(map)
-
-// let obj = {a:1,b:2};
-
-// for(let key in obj){
-//     console.log(key,obj[key]);
+//     for(let key in map){
+//         if(map[key] === 1){
+//             result.push(Number(key));
+//         }
+//     }
+//     return result;
 // }
+// console.log(findUnique([1,2,2,3,4,4]))
 
-// let map = new Map([
-//     ["a",1],
-//     ["b",2]
-// ])
+// function firstUnq(arr){
+//     let map = {};
 
-// for(let [key,value] of map){
-//     console.log(key,value);
-    
+//     for(let num of arr){
+//         map[num] = (map[num] || 0)+1;
+//     }
+
+//     for(let num of arr){
+//         if(map[num] === 1) return num;
+//     }
+
+//     return -1;
+
 // }
+// console.log(firstUnq([2,2,4,2,3,5]))
 
-// let obj = {a:1,b:2};
-// // console.log(Object.keys(obj).length)
-// console.log(delete obj.a)
-// console.log(obj)
+function isUnq(arr){
+    let set = new Set(arr);
 
-// let map = new Map([
-//     ["a",1],
-//     ["b",2]
-// ])
-// console.log(map.delete("a"))
-// console.log(map)
-
-function freq(arr){
-    let map = new Map();
-
-
-    for(let num of arr){
-        map.set(num, (map.get(num) || 0)+1);
-    }
-    return map;
+    return set.size === arr.length;
 }
-console.log(freq([1,2,2,3,3,3,3]))
+
+console.log(isUnq([1,2,3,4])); //True
+console.log(isUnq([1,2,2,4])); //False
