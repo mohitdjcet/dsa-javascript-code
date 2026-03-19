@@ -1,62 +1,32 @@
-//Input = [1,2,2,3,1,4,2]
-//Output = {1:2,2:3,3:1,4:1}
+// function subArrSum(arr,k){
+//   for(let i =0; i < arr.length; i++){
+//     let sum = 0;
+//     for(let j =i; j < arr.length; j++){
+//       sum += arr[j];
 
-// function freqCount(arr){
-//   let map = {};
-
-//   for(let num of arr){
-//     map[num] = (map[num] || 0)+1;
-//   }
-//   return map;
-// }
-// console.log(freqCount([1,2,2,3,1,4,2]))
-
-//Input = [1,2,2,3,1,4,2]
-//Output = 2
-
-// function mostFreq(arr){
-//   let map = {};
-//   let maxCount = 0;
-//   let result = null;
-
-//   for(let num of arr){
-//     map[num] = (map[num] || 0)+1;
-
-//     if(map[num]> maxCount){
-//       maxCount = map[num];
-//       result = num;
+//       if(sum === k){
+//         return true;
+//       }
 //     }
 //   }
-//   return result;
-// }
-// console.log(mostFreq([1,2,2,3,1,4,2]))
-
-// function firstUniq(str) {
-//   let map = {};
-//   for (let ch of str) {
-//     map[ch] = (map[ch] || 0) + 1;
-//   }
-
-//   for(let ch of str){
-//     if(map[ch]=== 1){
-//       return ch
-//     }
-//   }
-//   return null;
+//   return false;
 // }
 
-// console.log(firstUniq("aabbcdde"));
+function subArrSum(arr,k){
+  let map = new Map();
+  let sum = 0;
 
-
-function contDup(arr){
-  let set = new Set();
+  map.set(0,1);
 
   for(let num of arr){
-    if(set.has(num)){
+    sum +=num;
+    
+    if(map.has(sum-k)){
       return true;
     }
-    set.add(num);
+    map.set(sum,(map.get(sum) || 0)+1);
   }
   return false;
 }
-console.log(contDup([1,2,3]));
+
+console.log(subArrSum([1,2,3,4],6))
