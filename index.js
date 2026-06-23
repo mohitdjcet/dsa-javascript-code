@@ -1,35 +1,86 @@
-// function binarySearch(arr,target){
-//     let start= 0;
-//     let end = arr.length-1;
+//Input = [10,20,20,20,50]
+// 20
 
-//     while(start <= end){
+//1st Interview Question- 1st Occurence
+// function firstOcc(arr,target){
+//     let start = 0;
+//     let end = arr.length -1;
+//     let answer = -1;
+
+//     while(start<= end){
 //         let mid = Math.floor((start+end)/2);
 
 //         if(arr[mid]=== target){
-//             return mid;
-//         }
-//         if(target < arr[mid]){
+//             answer = mid;
+//             end = mid -1; //Left Search
+//         } else if(target < arr[mid]){
 //             end = mid -1;
 //         } else{
-//             start= mid+1;
+//             start= mid +1
 //         }
 //     }
-//     return -1
+//     return answer;
 // }
-// console.log(binarySearch([10,20,30,40,50,60,70],50));
+// console.log(firstOcc([10,20,20,20,50],20));
 
-function binarySer(arr, target, start, end) {
-  if (start > end) {
-    return -1;
-  }
-  let mid = Math.floor((start + end) / 2);
-  if (arr[mid] === target) {
-    return mid;
-  }
-  if(target < arr[mid]){
-    return binarySer(arr,target,start,mid-1)
-  }else{
-    return binarySer(arr,target,mid+1,end)
-  }
+
+//2nd-Last Occurence
+
+// function lastOcc(arr,target){
+//     let start = 0;
+//     let end = arr.length -1;
+//     let answer = -1;
+
+//     while(start<= end){
+//         let mid = Math.floor((start+end)/2);
+
+//         if(arr[mid]=== target){
+//             answer = mid;
+//             start = mid + 1; //Right Search
+//         } else if(target < arr[mid]){
+//             end = mid -1;
+//         } else{
+//             start= mid +1
+//         }
+//     }
+//     return answer;
+// }
+// console.log(lastOcc([10,20,20,20,50],20));
+
+
+//Count Occurence
+// function countOcc(arr,target){
+//     let first = firstOcc(arr,target)
+//     let last = lastOcc(arr,target)
+
+//     if(first === -1){
+//         return 0;
+//     }
+//     return last-first +1;
+// }
+// console.log(countOcc([10,20,20,20,50],20));
+
+
+//Lower Bound
+//Input: [10,20,30,40,50]
+//Traget: 25
+//Output: 2
+
+function lowerBound(arr,target){
+    let start =0;
+    let end = arr.length -1;
+    let answer = arr.length;
+
+    while(start<=end){
+        let mid = Math.floor((start+end)/2);
+
+        if(arr[mid] > target){
+            answer = mid;
+            end = mid -1;
+        }else{
+            start = mid +1;
+        }
+    }
+    return answer
 }
-console.log(binarySer([10, 20, 30, 40, 50], 40, 0, 4));
+console.log(lowerBound([10,20,20,20,50],20));
