@@ -1,42 +1,34 @@
-// function findUnique(arr){
-//     let map = {};
+// I/P = [10,20,30,40,50]
+// O/P = 30
 
-//     for(let num of arr){
-//         map[num] = (map[num] || 0)+1;
+// function linerSearch(str,target){
+//  for(let i=0; i< str.length; i++){
+//     if(str[i]=== target){
+//         return i
 //     }
-
-//     let result = [];
-
-//     for(let key in map){
-//         if(map[key] === 1){
-//             result.push(Number(key));
-//         }
-//     }
-//     return result;
+//  }
+//  return -1;
 // }
-// console.log(findUnique([1,2,2,3,4,4]))
+// console.log(linerSearch(["Rohit","Mohit","Anil"], "Mohit"));
 
-// function firstUnq(arr){
-//     let map = {};
-
-//     for(let num of arr){
-//         map[num] = (map[num] || 0)+1;
+// function firstOccur(arr,target){
+//  for(let i = arr.length-1; i>=0; i--){
+//     if(arr[i]=== target){
+//         return i
 //     }
-
-//     for(let num of arr){
-//         if(map[num] === 1) return num;
-//     }
-
-//     return -1;
-
+//  }
+//  return -1;
 // }
-// console.log(firstUnq([2,2,4,2,3,5]))
+// console.log(firstOccur([10,20,30,20,40],20));
 
-function isUnq(arr){
-    let set = new Set(arr);
-
-    return set.size === arr.length;
+function countOccur(arr,target){
+    let count = 0;
+    for(let num of arr){
+        if(num === target){
+            count++
+        }
+    }
+    return count
 }
+console.log(countOccur([10,20,30,20,40],20));
 
-console.log(isUnq([1,2,3,4])); //True
-console.log(isUnq([1,2,2,4])); //False
