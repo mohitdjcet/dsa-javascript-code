@@ -1,50 +1,44 @@
 class TreeNode{
   constructor(value){
     this.value = value;
-    this.left = null;
+    this.left= null;
     this.right = null;
   }
 }
 
-let root = new TreeNode(1);
-
-root.left = new TreeNode(2);
-root.right =new TreeNode(3);
-
-root.left.left =new TreeNode(4);
-root.left.right =new TreeNode(5);
-
-root.right.left =new TreeNode(6);
-root.right.right = new TreeNode(7);
-
-// function preOrder(root){
-//   if(root === null){
-//     return;
-//   }
-//   console.log(root.value);
-//   preOrder(root.left);
-//   preOrder(root.right)
-  
-// }
-// preOrder(root);
-
-// function inOrder(root){
-//   if(root === null){
-//     return;
-//   }
-//   inOrder(root.left);
-//   console.log(root.value);
-//   inOrder(root.right)
-  
-// }
-// inOrder(root);
-
-function inOrder(root){
+function insert(root,value){
   if(root === null){
-    return;
+    return new TreeNode(value)
   }
-  inOrder(root.left);
-  inOrder(root.right)
-  console.log(root.value);
+  if(value < root.value){
+    root.left = insert(root.left,value)
+  }else{
+    root.right = insert(root.right,value)
+  }
+  return root
 }
-inOrder(root);
+let root = null;
+root = insert(root,50);
+root = insert(root,30);
+root = insert(root,70);
+root = insert(root,20);
+root = insert(root,40);
+root = insert(root,60);
+root = insert(root,80);
+
+console.log(root);
+
+function search(root,target){
+  if(root === null){
+    return false
+  }
+  if(root.value === target){
+    return true
+  }
+  if(target < root.value){
+    return search(root.left,target)
+  }
+  return search(root.right,target)
+}
+
+console.log(search(root,120));
