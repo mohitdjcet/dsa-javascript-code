@@ -1,23 +1,17 @@
-function quickSort(arr) {
-  //Base Case
-  if (arr.length <= 1) {
-    return arr;
+class TreeNode{
+  constructor(value){
+    this.value = value;
+    this.left = null;
+    this.right = null;
   }
-  let pivot = arr[arr.length -1];
-  let left = [];
-  let right = [];
-
-  for(let i =0; i<arr.length-1; i++){
-    if(arr[i]<pivot){
-        left.push(arr[i]);
-    }else{
-        right.push(arr[i]);
-    }
-  }
-  return [
-    ...quickSort(left),
-    pivot,
-    ...quickSort(right)
-  ]
 }
-console.log(quickSort([8, 3, 1, 7, 0, 10, 2]));
+
+let root = new TreeNode(10);
+
+root.left = new TreeNode(20);
+root.right = new TreeNode(30);
+
+root.left.left = new TreeNode(40);
+root.left.right = new TreeNode(50);
+
+console.log(root);
