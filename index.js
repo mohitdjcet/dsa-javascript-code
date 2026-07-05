@@ -1,44 +1,44 @@
 class TreeNode{
   constructor(value){
     this.value = value;
-    this.left= null;
+    this.left = null;
     this.right = null;
   }
 }
 
-function insert(root,value){
+function height(root){
   if(root === null){
-    return new TreeNode(value)
+    return -1;
   }
-  if(value < root.value){
-    root.left = insert(root.left,value)
-  }else{
-    root.right = insert(root.right,value)
-  }
-  return root
+  let leftH = height(root.left);
+  let rightH = height(root.right);
+
+  return Math.max(leftH,rightH)+1;
 }
-let root = null;
-root = insert(root,50);
-root = insert(root,30);
-root = insert(root,70);
-root = insert(root,20);
-root = insert(root,40);
-root = insert(root,60);
-root = insert(root,80);
 
-console.log(root);
-
-function search(root,target){
+function findDepth(root,target,depth =0){
   if(root === null){
-    return false
+    return -1;
   }
   if(root.value === target){
-    return true
+    return depth;
   }
-  if(target < root.value){
-    return search(root.left,target)
+  let left = findDepth(root.left,target,depth+1);
+  if(left != -1){
+    return left;
   }
-  return search(root.right,target)
+  return findDepth(root.right,target,depth+1)
 }
 
-console.log(search(root,120));
+let root = new TreeNode(10);
+root.left = new TreeNode(20);
+root.right = new TreeNode(30);
+
+root.left.left =new TreeNode(40);
+root.left.right =new TreeNode(50);
+
+root.left.left.left = new TreeNode(60);
+
+console.log(height(root));
+console.log(findDepth(root,60));
+
