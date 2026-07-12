@@ -1,44 +1,27 @@
-class TreeNode{
-  constructor(value){
-    this.value = value;
-    this.left = null;
-    this.right = null;
+class Graph{
+  constructor(){
+    this.adjacencyList = {};
+  }
+  addVertex(vertex){
+    if(!this.adjacencyList[vertex]){
+      this.adjacencyList[vertex] = [];
+    }
+  }
+  addEdge(vertex1, vertex2){
+    this.adjacencyList[vertex1].push(vertex2);
+    this.adjacencyList[vertex2].push(vertex1)
   }
 }
 
-function height(root){
-  if(root === null){
-    return -1;
-  }
-  let leftH = height(root.left);
-  let rightH = height(root.right);
+let graph = new Graph();
 
-  return Math.max(leftH,rightH)+1;
-}
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addVertex("C");
+graph.addVertex("D");
 
-function findDepth(root,target,depth =0){
-  if(root === null){
-    return -1;
-  }
-  if(root.value === target){
-    return depth;
-  }
-  let left = findDepth(root.left,target,depth+1);
-  if(left != -1){
-    return left;
-  }
-  return findDepth(root.right,target,depth+1)
-}
+graph.addEdge("A","B");
+graph.addEdge("A","C");
+graph.addEdge("B","D");
 
-let root = new TreeNode(10);
-root.left = new TreeNode(20);
-root.right = new TreeNode(30);
-
-root.left.left =new TreeNode(40);
-root.left.right =new TreeNode(50);
-
-root.left.left.left = new TreeNode(60);
-
-console.log(height(root));
-console.log(findDepth(root,60));
-
+console.log(graph.adjacencyList);
