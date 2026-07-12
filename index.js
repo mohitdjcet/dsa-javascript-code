@@ -1,27 +1,30 @@
-class Graph{
-  constructor(){
-    this.adjacencyList = {};
-  }
-  addVertex(vertex){
-    if(!this.adjacencyList[vertex]){
-      this.adjacencyList[vertex] = [];
+const graph = {
+  A: ["B","C"],
+  B: ["A","D","E"],
+  C: ["A","F"],
+  D: ["B"],
+  E: ["B"],
+  F: ["C"]
+}
+
+function bfs(graph, start){
+  let queue = [];
+  let visited = new Set();
+
+  queue.push(start);
+  visited.add(start);
+
+  while(queue.length >0){
+    let current = queue.shift();
+    console.log(current);
+    for(let neighbor of graph[current]){
+      if(!visited.has(neighbor)){
+        visited.add(neighbor);
+        queue.push(neighbor)
+      }
     }
-  }
-  addEdge(vertex1, vertex2){
-    this.adjacencyList[vertex1].push(vertex2);
-    this.adjacencyList[vertex2].push(vertex1)
+    
   }
 }
 
-let graph = new Graph();
-
-graph.addVertex("A");
-graph.addVertex("B");
-graph.addVertex("C");
-graph.addVertex("D");
-
-graph.addEdge("A","B");
-graph.addEdge("A","C");
-graph.addEdge("B","D");
-
-console.log(graph.adjacencyList);
+bfs(graph,"A");
