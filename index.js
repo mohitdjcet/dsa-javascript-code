@@ -1,31 +1,46 @@
-const n = 4;
-const board = Array.from({length:n}, ()=> Array(n).fill("."));
+// function fibo(n){
+//     if(n <= 1){
+//         return n;
+//     }
+//     return fibo(n-1)+ fibo(n-2);
+// }
+// console.log(fibo(6));
 
-function isSafe(row,col){
-    for(let i =0; i<row; i++){
-        if(board[i][col] === "Q") return false
-    }
-    for(let i =row-1, j= col-1; i>=0&&j>=0;i--,j--){
-        if(board[i][j] === "Q") return false
-    }
-    for(let i =row-1, j= col+1; i>=0&&j<n;i--,j++){
-        if(board[i][j] === "Q") return false
-    }
-    return true
-}
+// function fibo(n, memo={}){
+//     if(n <= 1){
+//         return n;
+//     }
+//     if(memo[n]){
+//         return memo[n]
+//     }
+//     memo[n] = fibo(n-1,memo)+ fibo(n-2, memo);
+//     return memo[n];
+// }
+// console.log((fibo(6)));
 
-function solve(row){
-    if(row === n){
-        console.log("Solution Found");
-        console.log(board);
-        return;
-    }
-    for(let col=0;col<n;col++){
-        if(isSafe(row,col)){
-            board[row][col]= "Q";
-            solve(row+1);
-            board[row][col]= "."
-        }
-    }
+// function fibo(n) {
+//   if (n <= 1) {
+//     return n;
+//   }
+//   let dp = [0,1];
+//   for(let i=2; i<=n; i++){
+//     dp[i]= dp[i-1]+dp[i-2];
+//   }
+//   return dp[n]
+// }
+// console.log(fibo(6));
+
+function fibo(n){
+ if (n <= 1) {
+    return n;
+  } 
+  let prev2 = 0;
+  let prev1 = 1;
+  for(let i =2;i<=n; i++){
+    let current = prev1+prev2;
+    prev2 = prev1;
+    prev1 = current;
+  }
+  return prev1;
 }
-solve(0);
+console.log(fibo(6));
