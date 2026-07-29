@@ -1,13 +1,15 @@
-function coinChnage(amount){
-    const coins = [10,5,2,1];
+function sunsets(nums){
     let result = [];
 
-    for(let coin of coins){
-        while(amount >= coin){
-            result.push(coin);
-            amount -= coin;
+    function backtrack(index,current){
+        result.push([...current])
+        for(let i = index; i<nums.length; i++){
+            current.push(nums[i]);
+            backtrack(i+1,current);
+            current.pop();
         }
     }
+    backtrack(0,[]);
     return result;
 }
-console.log(coinChnage(28));
+console.log(sunsets([1,2]));
