@@ -1,46 +1,23 @@
-// function fibo(n){
-//     if(n <= 1){
-//         return n;
-//     }
-//     return fibo(n-1)+ fibo(n-2);
-// }
-// console.log(fibo(6));
+function knapsack(weight,values,capacity){
+  const n = weight.length;
 
-// function fibo(n, memo={}){
-//     if(n <= 1){
-//         return n;
-//     }
-//     if(memo[n]){
-//         return memo[n]
-//     }
-//     memo[n] = fibo(n-1,memo)+ fibo(n-2, memo);
-//     return memo[n];
-// }
-// console.log((fibo(6)));
+  const dp = Array.from({length: n+1},()=> Array(capacity+1).fill(0));
 
-// function fibo(n) {
-//   if (n <= 1) {
-//     return n;
-//   }
-//   let dp = [0,1];
-//   for(let i=2; i<=n; i++){
-//     dp[i]= dp[i-1]+dp[i-2];
-//   }
-//   return dp[n]
-// }
-// console.log(fibo(6));
-
-function fibo(n){
- if (n <= 1) {
-    return n;
-  } 
-  let prev2 = 0;
-  let prev1 = 1;
-  for(let i =2;i<=n; i++){
-    let current = prev1+prev2;
-    prev2 = prev1;
-    prev1 = current;
+  for(let i =1;i<=n; i++){
+    for(let w=1; w<=capacity; w++){
+      if(weight[i-1] <= w){
+        dp[i][w]= Math.max(
+          values[i-1]+
+          dp[i-1][w-weight[i-1]],
+          dp[i-1][w]
+        )
+      }else{
+        dp[i][w]= dp[i-1][w];
+      }
+    }
   }
-  return prev1;
+  return dp[n][capacity]
 }
-console.log(fibo(6));
+const weight = [10,20,30];
+const values = [60,100,120];
+console.log(knapsack(weight,values,50));
